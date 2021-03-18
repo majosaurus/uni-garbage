@@ -11,7 +11,5 @@ for (word, tag) in verbs:
         if word == word2 and word not in results:
             results.append(word)
 
-results = sorted(results)
-
 print('Number of words found:', len(results))
 print('Words:', ', '.join(sorted(results)))
