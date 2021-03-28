@@ -114,3 +114,26 @@ def main():
     classifier5()
 
 main()
+
+
+# I would sort the classifiers as following:
+#
+# 1. Bigram classifier (classifier4)
+# 2. First 30 + last 30 words classifier (classifier5)
+# 3. Last 30 words classifier (classifier3)
+# 4. First 30 words classifier (classifier2)
+# 5. Naïve Bayes Classifier (classifier1)
+#
+# Bigram classifier is the best of these 5 without a doubt. It takes some context
+# into account, so it can make better and reliable predictions. Although it doesn't
+# have better accuracy than pure Naïve Bayes every time, the pos:neg and neg:pos
+# values are always fundamentally higher.
+# As a second I chose the 30-30 classifier (classifier5). It gives steady results 
+# speaking of accuracy, and the pos:neg and neg:pos values are kinda high, too.
+# Then last 30 words classifier (classifier3)  and first 30 words classifier (classifier2).
+# They perform very similar and their accuracy and pos:neg values depend on the documents
+# retrieved. However, the accuracy of classifier2 (first 30 words) fluctuates more,
+# between 0,5-0,7, so I decided to put the classifier3 (last 30 words) higher in the rank.
+# On the last position, I left the pure Naïve Bayes classifier. Although it can perform
+# very good in accuracy, the pos:neg and neg:pos values are very low. Even lower than in
+# classifiers 2 and 3. Because of that, I decided to put it last.
