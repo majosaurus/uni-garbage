@@ -16,11 +16,21 @@ def read_tagged_sents():
 def pos_features(sentence, i, history):
      features = {"suffix(1)": sentence[i][-1:],
                  "suffix(2)": sentence[i][-2:],
-                 "suffix(3)": sentence[i][-3:]}
+                 "suffix(3)": sentence[i][-3:],
+                 "suffix(4)": sentence[i][-4:]}
      if i == 0:
+         features["prev-prev-word"] = "<START>"
+         features["prev-prev-tag"] = "<START>"
          features["prev-word"] = "<START>"
          features["prev-tag"] = "<START>"
+     elif i == 1:
+         features["prev-prev-word"] = "<START>"
+         features["prev-prev-tag"] = "<START>"
+         features["prev-word"] = sentence[i-1]
+         features["prev-tag"] = history[i-1]
      else:
+         features["prev-prev-word"] = sentence[i-2]
+         features["prev-prev-tag"] = history[i-2]
          features["prev-word"] = sentence[i-1]
          features["prev-tag"] = history[i-1]
      return features
@@ -85,3 +95,28 @@ def show_featureset(tagged_sents):
 
 features = show_featureset(tagged_sents)
 
+
+# I was suprised that taking one more previous word into consideration
+# didn't improve the performance at all. Usually, this ConsecutivePosTagger
+# gives me accuracy around 70% and it remained the same after looking at
+# two previous words. However, when I added 4th suffix, the performace
+# improved by cca 7%.
+#
+# I think it is a good score and it works well with Finnish which operates
+# with lots of affixes. Combined together with previous context the tagger
+# can make better decisions. I think it is a simple idea but it works
+# surprisingly well. On the other hand, I would like to know if there's
+# any explanation why this tagger works better for English than Finnish?
+# I would also like to try this tagger out with Czech and see the performance.
+#
+# The ConsecutivePosTagger works better than the RegexpTagger. Mine RegexpTagger
+# was around 51% accurate on the particular text we used in the exercise which is
+# not much. The RegexpTagger relies on the rules a lot and it doesn't take
+# context into consideration. If it doesn't have any rule to tag the word, it 
+# tags it as a noun without any probability taken into the decision. I would
+# also say these two taggers aren't directly comparable. In RegexpTagger, we
+# simply look for patterns in each word and if they are found in the word,
+# we give the word the first tag it matches the pattern for. But in
+# ConsecutivePosTagger we don't simply use a suffix as a tag indicator. We
+# train our model using Naïve Bayes algorithm, so we can base the decision
+# on statistics.
