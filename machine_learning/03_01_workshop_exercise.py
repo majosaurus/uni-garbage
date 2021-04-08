@@ -17,7 +17,10 @@ def pos_features(sentence, i, history):
      features = {"suffix(1)": sentence[i][-1:],
                  "suffix(2)": sentence[i][-2:],
                  "suffix(3)": sentence[i][-3:],
-                 "suffix(4)": sentence[i][-4:]}
+                 "suffix(4)": sentence[i][-4:],
+                 "prefix(1)": sentence[i][:3],
+                 "prefix(2)": sentence[i][:2],
+                 "prefix(3)": sentence[i][:1]}
      if i == 0:
          features["prev-prev-word"] = "<START>"
          features["prev-prev-tag"] = "<START>"
@@ -100,7 +103,8 @@ features = show_featureset(tagged_sents)
 # didn't improve the performance at all. Usually, this ConsecutivePosTagger
 # gives me accuracy around 70% and it remained the same after looking at
 # two previous words. However, when I added 4th suffix, the performace
-# improved by cca 7%.
+# improved by cca 7%. Then I added 3letter prefixes and the accuracy
+# rised to cca 85%.
 #
 # I think it is a good score and it works well with Finnish which operates
 # with lots of affixes. Combined together with previous context the tagger
