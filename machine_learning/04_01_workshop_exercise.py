@@ -50,10 +50,6 @@ def cosine_similarity(a,b):
 def cosine_distance(a,b):
     return 1 - cosine_similarity(a,b)
 
-# Compute the Euclidean distance between vectors a and b
-def euclidean(a, b):
-    return math.sqrt(sum((x-y)*(x-y) for x,y in zip(a,b)))
-
 # Print the similarity between each pair of words in the given list
 # Mathiasovo řešení používá dva for loopy - když si představíme slova
 # jako matici, zjistíme, že jsou symetrická podle diagonály, stačí nám
