@@ -1,0 +1,9 @@
+1. float
+2. string
+3. tuple of string and int
+4. dictionary with both strings as keys and values
+5. list of floats (you know exactly how many days there are in a year so you can easily
+        obtain the money on the bank account by indexing)
+6. list of strings (if you want to have their names)
+7. dictionary with ints as keys and bools as values (if tables are "named" by numbers)
+8. dictionary with tuples of strings as keys and floats as values

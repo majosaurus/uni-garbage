@@ -1,0 +1,63 @@
+In this task, you can reuse code from Assignment 11 (Word tokenization and sentence segmentation) or you can use functionality available in NLTK (see Chapter 3: Processing Raw Text).
+
+You need to create a program that:
+
+    Asks for an input text file: filename = input("What is your input file? ")
+
+    Reads the file and tokenizes the contents of the file into a list of word tokens. You can use your word tokenizer from Assignment 11 or you can use an existing word tokenizer (for instance, from NLTK). Remember exception handling when dealing with files.
+
+    When your program has split the text into word tokens, it should compute the frequencies of the tokens. For instance, if the word "and" occurs 35 times in your input text file, you should have an appropriate data structure that stores this information, such as a dictionary with words as keys and word frequencies as values. Here you are not allowed to use any ready-made libraries or functions that compute word frequencies.
+
+    When you have figured out the word frequencies, you need to sort your vocabulary in three different ways:
+
+        Sort the words into alphabetical order. This is "alphabetical" only in the sense that you accept the order defined by your current character encodings; if å, ä, and ö don't come where you would expect them to be, it does not matter. You can sort case-sensitively or case-insensitively; the decision is up to you. Print the sorted words, every word on a line of its own. Also print a title, such as "Alphabetical order" at the top. You should print a specific word only once, that is, don't print the word "and" 35 times.
+
+        Sort the words by decreasing frequency, that is, the most frequent word first and the least frequent word last. Print a title, such as "Ordered by frequency" at the top, and then print the sorted words, each word on a line of its own. After every word, print its frequency, on the same line. Again, don't print the same word many times.
+
+        Sort the words by decreasing length, that is, the longest word first and the shortest word last. Print a title, such as "Ordered by length" at the top, and then print the sorted words, each word on a line of its own. After every word, print its length in characters, on the same line. Don't print the same word many times.
+
+Below is a snippet of possible output from your program:
+
+Alphabetical order
+==================
+!
+.
+(
+)
+007
+040-1234567
+?
+Aaron
+abacus
+always
+...
+Zimbabwe
+
+Ordered by frequency
+====================
+.       85
+and     35
+this    21
+is      21
+or      20
+...
+?       10
+...
+Aaron   1
+abacus  1
+
+Ordered by length
+=================
+Pseudopseudohypoparathyroidism  30
+antidisestablishmentarianism    28
+...
+abacus  6
+always  6
+...
+.       1
+I       1
+a       1
+
+Submit your program through Moodle. This task is worth 4 points.
+
+PS: In order to work on this task, you need some test data, that is, a plain text file. Text should be easy to find. If you don't have any other idea, you can copy-paste the text of this assignment description into a file.

@@ -1,0 +1,6 @@
+All three examples are related to division (or to different types of division, respectively) and to different varible types.
+The first one returns a number with a decimal point (2.75) which is float variable type.
+The second one returns a bare number (2) not taking rounding in regard (2.3 and 2.8 both become 2). This is integer variable type.
+The last one returns a remainder after division which is integer always.
+
+We have to pay attention while working with different variable types. For example, if we decide to multiply 2.75 and 8 we get an error and we have to convert 2.75 to integer or 8 to float.

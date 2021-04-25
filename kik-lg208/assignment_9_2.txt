@@ -1,0 +1,37 @@
+1.
+a) 28
+28 is a decimal number, and it equals 28 as decimal number.
+28 is not a binary number.
+28 is not an octal number.
+28 is a hexadecimal number, and it equals 40 as decimal number.
+
+b) 1100
+1100 is a decimal number, and it equals 1100 as decimal number.
+1100 is a binary number, and it equals 12 as decimal number.
+1100 is an octal number, and it equals 576 as decimal number.
+1100 is a hexadecimal number, and it equals 4352 as decimal number.
+
+c) -127
+-127 is a decimal number, and it equals -127 as decimal number.
+-127 is not a binary number.
+-127 an octal number, and it equals -87 as decimal number.
+-127 is a hexadecimal number, and it equals -295 as decimal number.
+
+d) F1E20A
+F1E20A is not a decimal number.
+F1E20A is not a binary number.
+F1E20A is not an octal number.
+F1E20A is a hexadecimal number, and it equals 15852042 as decimal number.
+
+e) A0G1
+A0G1 is not a number in any number system.
+
+
+2.
+Tagged corpora for several other languages are distributed with NLTK, including Chinese, 
+Hindi, Portuguese, Spanish, Dutch and Catalan. These usually contain non-ASCII text, 
+and Python always displays this in hexadecimal when printing a larger structure such as a list.
+
+Unicode supports over a million characters. Each character is assigned a number, called 
+a code point. In Python, code points are written in the form \uXXXX, where XXXX is the 
+number in four-digit hexadecimal form.

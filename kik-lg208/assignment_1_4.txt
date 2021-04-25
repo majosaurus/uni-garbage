@@ -1,0 +1,5 @@
+Syntax error says that a statement is not valid according to the grammar of a language.
+	NL example: We was there.
+A statement with semantic error has a correct syntax but does not compute what was intended.
+	NL example: Be my host!
+		(I could not think of any better example. This one is related to false friends between Czech and English language. We have a word "host" in Czech which means "guest" in English and people often misuse it with English "host" which is translated as "hostitel" to Czech.)
