@@ -1,0 +1,39 @@
+Question 1: How does a perceptron work and what is the difference between a perceptron and a multi-layer perceptron (MLP)?
+
+
+
+Question 2: What is the difference between a feed-forward neural network and a recurrent neural network (RNN)? 
+            Additionally, what is the advantage of using Long Short-Term Memories (LSTMs)? 
+
+
+
+Question 3: Explain what happens in the five following lines of code of Workshop exercise 5.1.
+            `
+            model = Sequential()
+	    model.add(Embedding(max_features, 128, input_length=maxlen))
+	    model.add(Bidirectional(LSTM(64)))
+	    model.add(Dropout(0.5))
+	    model.add(Dense(1, activation='sigmoid'))
+            `
+
+Question 4: Explain what the output of the model.fit() command in Workshop exercise 5.1 means and what conclusions you can make based on that. 
+            The output of one possible run of the program is shown in red below. Base your answer on the output shown below.
+            `
+ 	    print('Train...')
+	    model.fit(x_train, y_train,
+          	      batch_size=batch_size,
+          	      epochs=4,
+            validation_data=[x_test, y_test])
+
+	    Train...
+	    Train on 25000 samples, validate on 25000 samples
+	    Epoch 1/4
+	    25000/25000 [==============================] - 141s 6ms/step - loss: 0.4147 - accuracy: 0.8087 - val_loss: 0.3457 - val_accuracy: 0.8469
+	    Epoch 2/4
+	    25000/25000 [==============================] - 140s 6ms/step - loss: 0.2241 - accuracy: 0.9118 - val_loss: 0.3898 - val_accuracy: 0.8459
+	    Epoch 3/4
+	    25000/25000 [==============================] - 139s 6ms/step - loss: 0.1294 - accuracy: 0.9513 - val_loss: 0.4283 - val_accuracy: 0.8407
+	    Epoch 4/4
+	    25000/25000 [==============================] - 136s 5ms/step - loss: 0.0754 - accuracy: 0.9746 - val_loss: 0.5882 - val_accuracy: 0.8279
+            `
+
