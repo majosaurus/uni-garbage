@@ -1,39 +1,66 @@
-Question 1: How does a perceptron work and what is the difference between a perceptron and a multi-layer perceptron (MLP)?
+Question 1: All inputs are multiplied with their weights. Then all these multiplied results are added together (called
+                weighted sum). Then the weighted sum is applied to an activation function. Then the algorithm separates
+                the inputs into two categories (marking them 0 or 1 based on a specified threshold).
+
+            The first difference between a perceptron and a multi-layer perceptron is in layers. A perceptron has input and
+                output layer only. A MLP has at least one hidden layer on top of having input and output layer. 
+            MLP can be called the feed-forward network. In this type of network, outputs from units are passed to higher
+                level units, but only forward, they cannot be passed back to lower level (hence the name).
+            Next difference is that perceptron is purely linear, but MLP uses non-linear functions.
+         
+
+Question 2: Feed-forward NN: cannot contain cycles within its connections
+                             outputs from lower-level units are passed to higher-level units
+                             outputs are passed always forward, never back to lower level or the same unit                             
+            
+            Recurrent NN: contains a cycle within its connections
+                          a value is dependent on its own earlier outputs as an input
+            
+            LSTM removes information no longer needed from the context, and adds information likely to be needed for later decision making
+	    Advantages: having short-term and long-term memory - good for sequential data (e.g. texts) because we have context
+                        it can deal with unlimited state numbers (in comparison to HMM or finite state automata)
+                        if relevant inputs are widely separated, it does not matter, LSTM can handle these cases well
+                        it's fast (O(1) complexity)
 
 
+Question 3: Here we create a Sequential model manually, step-by-step using add() method.
+            First we create a blank Sequential model. Than we apply word embedding. Then we use Long Short-Term Memory neural network.
+            Then we drop some elements of the input. Last, we create a densely-connected neural network layer with dimensionality of 1.
 
-Question 2: What is the difference between a feed-forward neural network and a recurrent neural network (RNN)? 
-            Additionally, what is the advantage of using Long Short-Term Memories (LSTMs)? 
+            model = Sequential() = groups layers into an object with training and inference features, here sequential model is used,
+                                   which groups a linear stack of layers together. Each layer has to have exactly one input tensor
+                                   and one output tensor.
+            model.add(Embedding(max_features, 128, input_length=maxlen)) = turns positive integers (indexes) into dense vectors of fixed size
+                                                                           max_features is size of our vocabulary (int)
+                                                                           128 is dimension of the vector (int)
+                                                                           input_length is length of input sequences, when it's constant, we
+                                                                                        need this argument if we want to use Flatten and 
+                                                                                        Dense layers. In the code, we use it for words, and
+                                                                                        it equals to 100 (so we use 100 words for each review)
+            model.add(Bidirectional(LSTM(64))) = Bidirectional wrapper for Recurrent neural network, bidirectional RNN duplicates the first
+                                                 recurrent layer in the network, so we have two layers side-by-side, then we pass input as
+                                                 it is to the first one and reversed input to the second one, Long Short-Term Memory has 
+                                                 feedback connections, here 64 refers to dimensionality of the output space
+            model.add(Dropout(0.5)) =  Float between 0 and 1. Fraction of the input units to drop (set input units to 0 based on the
+                                       specified frequency - here 0.5)
+            model.add(Dense(1, activation='sigmoid')) = densely-connected NN layer, dimensionality of 1, using sigmoid function
 
 
+Question 4: model.fit() trains the model for a fixed number of epochs (iterations on a dataset)
+            in the exercise output, it iterates 4 times over the dataset
+            it took 141 seconds to iterate over the first epoch, 140 seconds over the second, etc.
+            the speed of the iteration over the first epoch was 6ms per step, 5ms over the fourth epoch
+            loss refers to how bad the model's prediction was on the training set
+            accuracy refers to current accuracy (how correct the model is) of the training set how correct the model is
+            val_loss refers to how bad the model's prediction was evaluated against the validation set
+            val_accuracy refers to how correct the model's prediction was evaluated against the validation set
 
-Question 3: Explain what happens in the five following lines of code of Workshop exercise 5.1.
-            `
-            model = Sequential()
-	    model.add(Embedding(max_features, 128, input_length=maxlen))
-	    model.add(Bidirectional(LSTM(64)))
-	    model.add(Dropout(0.5))
-	    model.add(Dense(1, activation='sigmoid'))
-            `
-
-Question 4: Explain what the output of the model.fit() command in Workshop exercise 5.1 means and what conclusions you can make based on that. 
-            The output of one possible run of the program is shown in red below. Base your answer on the output shown below.
-            `
- 	    print('Train...')
-	    model.fit(x_train, y_train,
-          	      batch_size=batch_size,
-          	      epochs=4,
-            validation_data=[x_test, y_test])
-
-	    Train...
-	    Train on 25000 samples, validate on 25000 samples
-	    Epoch 1/4
-	    25000/25000 [==============================] - 141s 6ms/step - loss: 0.4147 - accuracy: 0.8087 - val_loss: 0.3457 - val_accuracy: 0.8469
-	    Epoch 2/4
-	    25000/25000 [==============================] - 140s 6ms/step - loss: 0.2241 - accuracy: 0.9118 - val_loss: 0.3898 - val_accuracy: 0.8459
-	    Epoch 3/4
-	    25000/25000 [==============================] - 139s 6ms/step - loss: 0.1294 - accuracy: 0.9513 - val_loss: 0.4283 - val_accuracy: 0.8407
-	    Epoch 4/4
-	    25000/25000 [==============================] - 136s 5ms/step - loss: 0.0754 - accuracy: 0.9746 - val_loss: 0.5882 - val_accuracy: 0.8279
-            `
+	    Epoch 4/4 - what epoch is being iterated over
+            2500/2500 - what sample is being iterated over
+            136s - how long the iteration over the epoch took
+            5ms/step - how fast it was
+            loss: 0.0754 - the prediction was bad in 7,5% on the training set
+            accuracy: 0.9746 - the prediction was correct in 97,46% on the training set
+            val_loss: 0.5882 - the prediction was bad in 58,82% evaluated against the validation set
+            val_accuracy: 0.8279 - the prediction was correct in 82,79% evaluated against the validation set
 
