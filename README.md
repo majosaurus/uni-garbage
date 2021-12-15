@@ -1,6 +1,6 @@
 # Uni Garbage
 
-A place to store my code from different programming courses. As Marek said: obaly od vyfoniek, použité kondómy, a kód z intra do programovania.
+A place to store my code from different programming courses. As Alice said: obaly od vyfoniek, použité kondómy, a kód z intra do programovania.
 
 ## Meet me as an IT person:
 
